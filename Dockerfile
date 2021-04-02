@@ -1,5 +1,5 @@
 FROM lapierre/alpine:3
-ARG VERSION=1.14.0
+ARG VERSION=1.15.0
 
 # Inspiration from https://github.com/gmr/alpine-pgbouncer/blob/master/Dockerfile
 RUN \

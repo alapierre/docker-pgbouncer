@@ -27,6 +27,7 @@ Available tags
 Base images:
 
 - `latest` 
+- `1.15.0` 
 - `1.14.0` 
 
 Images are automatically rebuilt on base image `lapierre/alpine` updates.
