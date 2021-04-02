@@ -1,7 +1,7 @@
 PgBouncer Docker image
 ======================
 
-This is a minimal PgBouncer image, based on Alpine Linux.
+This is a minimal PgBouncer image, based on security patched Alpine Linux, inspired by https://github.com/edoburu/docker-pgbouncer
 
 Features:
 
@@ -26,13 +26,10 @@ Available tags
 
 Base images:
 
-- `latest` ([Dockerfile](https://github.com/edoburu/docker-pgbouncer/blob/master/Dockerfile)) - Default and latest version.
-- `1.12.0` ([Dockerfile](https://github.com/edoburu/docker-pgbouncer/blob/v1.12.x/Dockerfile)) - Latest version.
-- `1.11.0` ([Dockerfile](https://github.com/edoburu/docker-pgbouncer/blob/v1.11.x/Dockerfile)) - previous version.
-- `1.9.0` ([Dockerfile](https://github.com/edoburu/docker-pgbouncer/blob/v1.9.x/Dockerfile))
-- `1.8.1` ([Dockerfile](https://github.com/edoburu/docker-pgbouncer/blob/v1.8.x/Dockerfile))
+- `latest` 
+- `1.14.0` 
 
-Images are automatically rebuild on Alpine Linux updates.
+Images are automatically rebuilt on base image `lapierre/alpine` updates.
 
 
 Usage
@@ -42,7 +39,7 @@ Usage
 docker run --rm \
     -e DATABASE_URL="postgres://user:pass@postgres-host/database" \
     -p 5432:5432 \
-    edoburu/pgbouncer
+    lapierre/pgbouncer
 ```
 
 
@@ -55,7 +52,7 @@ docker run --rm \
     -e DB_HOST=postgres-host \
     -e DB_NAME=database \
     -p 5432:5432 \
-    edoburu/pgbouncer
+    lapierre/pgbouncer
 ```
 
 Connecting should work as expected:
@@ -76,7 +73,7 @@ docker run --rm \
     -e SERVER_RESET_QUERY="DISCARD ALL" \
     -e MAX_CLIENT_CONN=100 \
     -p 5432:5432
-    edoburu/pgbouncer
+    lapierre/pgbouncer
 ```
 
 
@@ -116,14 +113,14 @@ docker run --rm \
     -e DB_NAME=database \
     -v pgbouncer.ini:/etc/pgbouncer/pgbouncer.ini:ro
     -p 5432:5432
-    edoburu/pgbouncer
+    lapierre/pgbouncer
 ```
 
 
 Or extend the `Dockerfile`:
 
 ```Dockerfile
-FROM edoburu/pgbouncer:1.11.0
+FROM lapierre/pgbouncer
 COPY pgbouncer.ini userlist.txt /etc/pgbouncer/
 ```
 
